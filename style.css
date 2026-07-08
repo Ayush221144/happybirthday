@@ -1,0 +1,262 @@
+/* --- Variables & Reset --- */
+:root {
+    --dark-bg: #0a050f;
+    --pink-glow: #ff4d85;
+    --light-pink: #ffb3c6;
+    --white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/* --- Typography --- */
+.romantic-text {
+    font-family: 'Dancing Script', cursive;
+    color: var(--pink-glow);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 77, 133, 0.5);
+}
+
+/* --- Glassmorphism UI --- */
+.glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --- Screen Management (Full Pages) --- */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-in-out;
+    z-index: 10;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    display: none !important;
+}
+
+.active {
+    opacity: 1;
+    pointer-events: all;
+    display: flex !important;
+}
+
+/* --- Internal Section Management (Inside Main Content) --- */
+.hidden-section {
+    display: none !important;
+    opacity: 0;
+}
+
+.active-section {
+    display: flex !important;
+    opacity: 1;
+}
+
+.full-width {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Loading Screen Elements --- */
+.heart-loader {
+    font-size: 3rem;
+    animation: pulse 1s infinite;
+    margin-bottom: 20px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--pink-glow);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--pink-glow);
+}
+
+/* --- Gift Box Elements --- */
+.gift-box {
+    font-size: 6rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.gift-box:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* --- Animations --- */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+/* --- Floating Background Hearts --- */
+.bg-heart {
+    position: fixed;
+    color: var(--pink-glow);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* --- Buttons --- */
+.glow-btn {
+    background: var(--pink-glow);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px var(--pink-glow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.glow-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--light-pink);
+}
+
+/* --- Password Screen --- */
+#password-section {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#secret-password {
+    width: 80%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.error-text {
+    color: #ff4d4d;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* --- Love Letter --- */
+#love-letter-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.letter-paper {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+/* --- Polaroid Gallery --- */
+#gallery-section {
+    min-height: 100vh;
+    padding: 50px 20px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 1000px;
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    width: 250px;
+}
+
+.polaroid:nth-child(even) { transform: rotate(3deg); }
+.polaroid:nth-child(odd) { transform: rotate(-3deg); }
+
+.polaroid:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 10;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.polaroid p {
+    color: #333;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
