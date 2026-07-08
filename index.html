@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Jannu ❤️</title>
+    
+    <!-- Romantic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Audio -->
+    <audio id="bg-music" loop>
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Background Hearts Container -->
+    <div id="background-hearts"></div>
+
+    <!-- PAGE 1: Loading Screen -->
+    <section id="loading-screen" class="screen active">
+        <div class="loading-content glassmorphism">
+            <div class="heart-loader">❤️</div>
+            <h2 class="romantic-text">Loading something made with love...</h2>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: Gift Box Screen -->
+    <section id="gift-screen" class="screen hidden">
+        <div class="gift-container glassmorphism">
+            <h2 class="romantic-text">For my pretty little baby...</h2>
+            <p>Tap to open</p>
+            <div class="gift-box" id="gift-box">
+                🎁
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: Main App Container -->
+    <main id="main-content" class="screen hidden">
+        
+        <!-- Password Screen -->
+        <section id="password-section" class="glassmorphism">
+            <h2>Enter the secret password to continue 💖</h2>
+            <p>Hint: What is my favorite name for you?</p>
+            <input type="password" id="secret-password" placeholder="Type here...">
+            <button id="submit-password" class="glow-btn">Unlock</button>
+            <p id="password-error" class="hidden error-text">Oops! Try again, beautiful. 😉</p>
+        </section>
+
+        <!-- The Protected Content (Hidden until password is correct) -->
+        <div id="protected-content" class="hidden full-width">
+            
+            <!-- Love Letter Section -->
+            <section id="love-letter-section" class="active-section">
+                <div class="letter-paper">
+                    <span id="typed-text"></span>
+                </div>
+                <button id="continue-journey" class="glow-btn hidden">Continue Our Journey ❤️</button>
+            </section>
+
+            <!-- Our Memories Gallery Section -->
+            <section id="gallery-section" class="hidden-section">
+                <h2 class="romantic-text">Our Beautiful Memories</h2>
+                <div class="gallery-grid">
+                    <!-- Image 1 -->
+                    <div class="polaroid">
+                        <img src="photo1.jpeg" alt="Us">
+                        <p>The day it all started ❤️</p>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="polaroid">
+                        <img src="photo2.jpeg" alt="Us">
+                        <p>My favorite smile 😊</p>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="polaroid">
+                        <img src="photo3.jpeg" alt="Us">
+                        <p>Unforgettable moments ✨</p>
+                    </div>
+                    <!-- Add more polaroid blocks here as needed -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
