@@ -8,11 +8,7 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--dark-bg);
@@ -22,241 +18,155 @@ body {
     height: 100vh;
 }
 
-/* --- Typography --- */
+/* Canvas Background */
+#particle-canvas {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0; pointer-events: none;
+}
+
+/* Typography */
 .romantic-text {
-    font-family: 'Dancing Script', cursive;
-    color: var(--pink-glow);
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(255, 77, 133, 0.5);
+    font-family: 'Dancing Script', cursive; color: var(--pink-glow);
+    font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 0 10px rgba(255, 77, 133, 0.5);
 }
 
-/* --- Glassmorphism UI --- */
+/* Glassmorphism */
 .glassmorphism {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 40px;
-    text-align: center;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px;
+    text-align: center; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* --- Screen Management (Full Pages) --- */
+/* Screen Management */
 .screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s ease-in-out;
-    z-index: 10;
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    transition: opacity 1s ease-in-out; z-index: 10;
 }
 
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-    display: none !important;
-}
+.hidden { opacity: 0; pointer-events: none; z-index: -1; display: none !important; }
+.active { opacity: 1; pointer-events: all; display: flex !important; }
+.hidden-section { display: none !important; opacity: 0; }
+.active-section { display: flex !important; opacity: 1; }
+.full-width { width: 100%; height: 100%; }
 
-.active {
-    opacity: 1;
-    pointer-events: all;
-    display: flex !important;
-}
+/* Loading & Gift Screens */
+.heart-loader { font-size: 3rem; animation: pulse 1s infinite; margin-bottom: 20px; }
+.progress-bar-container { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; margin-top: 20px; overflow: hidden; }
+.progress-bar { width: 0%; height: 100%; background: var(--pink-glow); border-radius: 10px; box-shadow: 0 0 10px var(--pink-glow); }
 
-/* --- Internal Section Management (Inside Main Content) --- */
-.hidden-section {
-    display: none !important;
-    opacity: 0;
-}
-
-.active-section {
-    display: flex !important;
-    opacity: 1;
-}
-
-.full-width {
-    width: 100%;
-    height: 100%;
-}
-
-/* --- Loading Screen Elements --- */
-.heart-loader {
-    font-size: 3rem;
-    animation: pulse 1s infinite;
-    margin-bottom: 20px;
-}
-
-.progress-bar-container {
-    width: 100%;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background: var(--pink-glow);
-    border-radius: 10px;
-    box-shadow: 0 0 10px var(--pink-glow);
-}
-
-/* --- Gift Box Elements --- */
-.gift-box {
-    font-size: 6rem;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: transform 0.3s ease;
+.gift-box { 
+    font-size: 6rem; 
+    cursor: pointer; 
+    margin-top: 20px; 
+    display: inline-block; 
     animation: bounce 2s infinite;
+    position: relative;
+    z-index: 100;
+    user-select: none;
 }
 
-.gift-box:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* --- Animations --- */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-20px); }
-    60% { transform: translateY(-10px); }
-}
-
-/* --- Floating Background Hearts --- */
-.bg-heart {
-    position: fixed;
-    color: var(--pink-glow);
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* --- Buttons --- */
-.glow-btn {
-    background: var(--pink-glow);
-    color: var(--white);
-    border: none;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 30px;
+.gift-container {
     cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 0 15px var(--pink-glow);
-    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 90;
 }
 
-.glow-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px var(--light-pink);
+/* Buttons */
+.glow-btn {
+    background: var(--pink-glow); color: var(--white); border: none; padding: 12px 30px;
+    font-size: 1.2rem; font-family: 'Poppins', sans-serif; border-radius: 30px; cursor: pointer;
+    margin-top: 20px; box-shadow: 0 0 15px var(--pink-glow); display: inline-block;
 }
 
 /* --- Password Screen --- */
 #password-section {
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
     text-align: center;
+    flex-direction: column !important; 
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+}
+
+#password-section h2 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 5px;
 }
 
 #secret-password {
-    width: 80%;
-    padding: 10px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 280px; 
+    padding: 12px 20px;
+    margin-top: 10px;
+    border: 2px solid rgba(255, 77, 133, 0.4);
+    border-radius: 12px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
     outline: none;
+    background: rgba(255, 255, 255, 0.1); 
+    color: var(--white);
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+#secret-password:focus {
+    border-color: var(--pink-glow);
+    box-shadow: 0 0 10px rgba(255, 77, 133, 0.5);
+}
+
+#secret-password::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#submit-password {
+    margin-top: 10px;
+    width: 150px; 
 }
 
 .error-text {
     color: #ff4d4d;
-    margin-top: 10px;
-    font-size: 0.9rem;
+    margin-top: 5px;
+    font-size: 0.95rem;
+    text-shadow: 0 0 5px rgba(255, 77, 77, 0.4);
 }
 
-/* --- Love Letter --- */
-#love-letter-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    width: 100%;
-}
+/* Letter */
+#love-letter-section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; }
+.letter-paper { background: rgba(255, 255, 255, 0.9); color: #333; max-width: 800px; padding: 40px; border-radius: 10px; font-family: 'Dancing Script', cursive; font-size: 1.5rem; line-height: 1.6; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; }
 
-.letter-paper {
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    max-width: 800px;
-    padding: 40px;
-    border-radius: 10px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.5rem;
-    line-height: 1.6;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    text-align: left;
-}
-
-/* --- Polaroid Gallery --- */
-#gallery-section {
-    min-height: 100vh;
-    padding: 50px 20px;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-    max-width: 1000px;
-}
-
-.polaroid {
-    background: white;
-    padding: 15px 15px 40px 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
-    width: 250px;
-}
-
+/* Polaroids */
+#gallery-section { min-height: 100vh; padding: 50px 20px; text-align: center; flex-direction: column; align-items: center; width: 100%; }
+.gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; max-width: 1000px; }
+.polaroid { background: white; padding: 15px 15px 40px 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); width: 250px; cursor: pointer; }
 .polaroid:nth-child(even) { transform: rotate(3deg); }
 .polaroid:nth-child(odd) { transform: rotate(-3deg); }
+.polaroid img { width: 100%; height: 250px; object-fit: cover; pointer-events: none; }
+.polaroid p { color: #333; font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-top: 15px; pointer-events: none; }
 
-.polaroid:hover {
-    transform: scale(1.1) rotate(0deg) !important;
-    z-index: 10;
-}
+/* Timeline */
+.timeline-container { display: flex; flex-direction: column; gap: 20px; margin: 30px 0; }
+.timeline-item { background: rgba(255, 255, 255, 0.1); border-left: 4px solid var(--pink-glow); padding: 15px 20px; text-align: left; border-radius: 0 10px 10px 0; transition: transform 0.3s; }
+.timeline-item:hover { transform: translateX(10px); background: rgba(255, 255, 255, 0.2); }
+.timeline-item h3 { font-family: 'Dancing Script', cursive; color: var(--light-pink); font-size: 1.8rem; }
 
-.polaroid img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
+/* Interactive Games */
+.interactive-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 40px auto; max-width: 600px; }
+.interactive-heart { font-size: 3rem; cursor: pointer; transition: transform 0.2s, filter 0.2s; animation: float 3s infinite ease-in-out; }
+.interactive-heart:hover { transform: scale(1.2); filter: drop-shadow(0 0 10px var(--pink-glow)); }
+.interactive-heart:active { transform: scale(0.9); }
 
-.polaroid p {
-    color: #333;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.5rem;
-    margin-top: 15px;
-}
+#starry-sky { position: relative; width: 100vw; height: 60vh; overflow: hidden; }
+.clickable-star { position: absolute; font-size: 2rem; cursor: pointer; color: white; transition: transform 0.3s, color 0.3s; animation: twinkle 2s infinite alternate; }
+.clickable-star:hover { transform: scale(1.5) rotate(15deg); }
+
+.hidden-display { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; pointer-events: none; margin-top: 20px; }
+.hidden-display.show { opacity: 1; transform: translateY(0); }
+
+/* Keyframes */
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-20px); } 60% { transform: translateY(-10px); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes twinkle { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px white); } 100% { opacity: 1; filter: drop-shadow(0 0 10px white); } }
