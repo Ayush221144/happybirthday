@@ -1,13 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Jannu ❤️</title>
-    
     <!-- Romantic Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,8 +17,8 @@
         <source src="sound.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Floating Background Hearts Container -->
-    <div id="background-hearts"></div>
+    <!-- Professional Canvas Particle System -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- PAGE 1: Loading Screen -->
     <section id="loading-screen" class="screen active">
@@ -37,9 +36,7 @@
         <div class="gift-container glassmorphism">
             <h2 class="romantic-text">For my pretty little baby...</h2>
             <p>Tap to open</p>
-            <div class="gift-box" id="gift-box">
-                🎁
-            </div>
+            <div class="gift-box" id="gift-box">🎁</div>
         </div>
     </section>
 
@@ -47,7 +44,7 @@
     <main id="main-content" class="screen hidden">
         
         <!-- Password Screen -->
-        <section id="password-section" class="glassmorphism">
+        <section id="password-section" class="glassmorphism active-section">
             <h2>Enter the secret password to continue 💖</h2>
             <p>Hint: What is my favorite name for you?</p>
             <input type="password" id="secret-password" placeholder="Type here...">
@@ -55,7 +52,7 @@
             <p id="password-error" class="hidden error-text">Oops! Try again, beautiful. 😉</p>
         </section>
 
-        <!-- The Protected Content (Hidden until password is correct) -->
+        <!-- The Protected Content -->
         <div id="protected-content" class="hidden full-width">
             
             <!-- Love Letter Section -->
@@ -70,33 +67,74 @@
             <section id="gallery-section" class="hidden-section">
                 <h2 class="romantic-text">Our Beautiful Memories</h2>
                 <div class="gallery-grid">
-                    <!-- Image 1 -->
                     <div class="polaroid">
                         <img src="photo1.jpeg" alt="Us">
                         <p>The day it all started ❤️</p>
                     </div>
-                    <!-- Image 2 -->
                     <div class="polaroid">
                         <img src="photo2.jpeg" alt="Us">
                         <p>My favorite smile 😊</p>
                     </div>
-                    <!-- Image 3 -->
                     <div class="polaroid">
                         <img src="photo3.jpeg" alt="Us">
                         <p>Unforgettable moments ✨</p>
                     </div>
-                    <!-- Add more polaroid blocks here as needed -->
                 </div>
+                <button id="to-timeline-btn" class="glow-btn" style="margin-top: 30px;">Next Chapter ⏳</button>
+            </section>
+
+            <!-- Timeline Section -->
+            <section id="timeline-section" class="hidden-section glassmorphism full-width">
+                <h2 class="romantic-text">Our Journey</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <h3>The First Hello</h3>
+                        <p>The moment that changed everything.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Our First Date</h3>
+                        <p>I couldn't stop looking at your smile.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Today</h3>
+                        <p>Celebrating the most amazing girl in the world.</p>
+                    </div>
+                </div>
+                <button id="to-reasons-btn" class="glow-btn">Why I Love You ❤️</button>
+            </section>
+
+            <!-- Reasons (Interactive Hearts) -->
+            <section id="reasons-section" class="hidden-section full-width" style="text-align: center;">
+                <h2 class="romantic-text">Pop the hearts to see why I love you</h2>
+                <div id="reasons-container" class="interactive-container"></div>
+                
+                <div id="reason-display" class="glassmorphism hidden-display">
+                    <p id="reason-text" class="romantic-text" style="font-size: 1.8rem;"></p>
+                </div>
+                
+                <button id="to-stars-btn" class="glow-btn hidden">Look at the Stars ✨</button>
+            </section>
+
+            <!-- Starry Sky (Interactive Stars) -->
+            <section id="stars-section" class="hidden-section full-width">
+                <h2 class="romantic-text" style="text-align: center; position: relative; z-index: 10;">Find the hidden stars in our sky</h2>
+                <div id="starry-sky"></div>
+                
+                <div id="star-message-display" class="glassmorphism hidden-display" style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); z-index: 10;">
+                    <p id="star-message-text" class="romantic-text" style="font-size: 1.5rem;"></p>
+                </div>
+                
+                <button id="to-finale-btn" class="glow-btn hidden" style="position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); z-index: 10;">Happy Birthday Jannu 🎂</button>
             </section>
 
         </div>
-    </main>
+    </main>.32
 
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    
+
     <!-- Custom Script -->
     <script src="script.js"></script>
 </body>
